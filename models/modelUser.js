@@ -4,4 +4,4 @@ const modelUser = {
     }
 }
 
-module.exports = User;
+module.exports = modelUser;
