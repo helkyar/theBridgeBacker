@@ -7,11 +7,14 @@ const clientParams = {
     port: process.env.PORT,
 }
 const client = new Client(clientParams);
-
+const userManager = require('./userManger');
 
 const manager = {
+    //En un futuro definimos que tipo de peticion se le hace al manager por params
     userManager: () => {
-        await client.connect()
-            //User manager examples
+
+        return userManager.getAllUsers(client)
+
+
     }
 }
