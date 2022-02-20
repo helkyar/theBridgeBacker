@@ -1,6 +1,6 @@
 const router = require('express').Router();
-require('dotenv').config()
-router.use('/user', require('./users'));
+
+router.get('/all', require('../controllers/getUsersController'));
 // router.use('', require(''));
 
 module.exports = router;

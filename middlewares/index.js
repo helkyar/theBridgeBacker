@@ -4,4 +4,4 @@ let middlewares = {
     }
 }
 
-module.exports.middlewares = middlewares;
+module.exports = middlewares;
