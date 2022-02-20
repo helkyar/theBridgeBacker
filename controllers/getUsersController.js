@@ -6,4 +6,5 @@ function userController(req, res) {
     users = userModel.userManager.getAllUsers()
     console.log(users);
 }
+
 module.exports = userController;

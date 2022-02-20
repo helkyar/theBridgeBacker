@@ -26,7 +26,9 @@ class UserManager extends Manager {
             console.log('Error en getAllUsers');
             console.log(error);
         }
+        this.client.end();
     }
+    
 }
 
 module.exports = UserManager;
