@@ -13,15 +13,15 @@ class CourseManager extends Manager {
 
 
             let data = await this.client.query(this.queries.getAll)
-            let tempUsers;
+            let tempCourses;
             data.row.map(e => {
                 console.log(`Valor de row `);
                 console.log(...e);
-                tempUsers.push(new courseModel(...e))
+                tempCourses.push(new courseModel(...e))
             })
             console.log('Log tempuser')
             console.log(tempUsers);
-            return tempUsers;
+            return tempCourses;
         } catch (error) {
             console.log('Error en getAllCourses');
             console.log(error);
