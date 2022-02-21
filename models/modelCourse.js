@@ -4,7 +4,7 @@ class Course {
     #startDate;
     #endDate;
     #type;
-    static courseManager = require("../managers/courseManager");
+    static courseManager = require("../managers/CourseManager");
   
     constructor(id,title,startDate,endDate,type) {
       this.#id = id;

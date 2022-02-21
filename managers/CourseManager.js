@@ -1,5 +1,5 @@
 let Manager = require('./Manager');
-let courseModel = require('../models/courseModel')
+let courseModel = require('../models/modelCourse')
 const { Client } = require('pg')
 
 class CourseManager extends Manager {
