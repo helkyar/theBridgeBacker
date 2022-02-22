@@ -9,24 +9,20 @@ class CourseManager extends Manager {
     }
 
     static async getAllCourses() {
-
+        //Necessary to create different object for each query, otherwise it gives error.
+        let client = new Client(this.clientParams)
         try {
-
-            this.client.connect();
-            let data = await this.client.query(this.queries.getAll)
+            client.connect();
+            let data = await client.query(this.queries.getAll)
             let tempCourses = [];
             data.rows.map(e => {
-                console.log(`Valor de row `);
-                console.log(e);
-                tempCourses.push(new Course(e.id, e.title, e.startdate, e.enddate, e.type))
+                tempCourses.push(new Course(e));
             })
+            client.end();
 
-            console.log('Log tempuser')
-            console.log(tempUsers);
-            this.client.end();
             return tempCourses;
         } catch (error) {
-            this.client.end();
+            client.end();
             console.log('Error en getAllCourses');
             console.log(error);
         }
