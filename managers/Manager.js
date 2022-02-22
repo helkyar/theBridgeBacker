@@ -1,5 +1,3 @@
-const { Client } = require('pg')
-
 class Manager {
 
     static clientParams = {
@@ -9,8 +7,5 @@ class Manager {
         password: process.env.PASSWORD,
         port: process.env.PORT
     }
-    
-
 }
-console.log();
 module.exports = Manager;

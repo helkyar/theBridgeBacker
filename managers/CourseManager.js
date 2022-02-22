@@ -16,10 +16,11 @@ class CourseManager extends Manager {
             let data = await client.query(this.queries.getAll)
             let tempCourses = [];
             data.rows.map(e => {
+                //It is not necessary to pass all the parameters separately, 
+                //since the model constructor does the destructuring.
                 tempCourses.push(new Course(e));
             })
             client.end();
-
             return tempCourses;
         } catch (error) {
             client.end();

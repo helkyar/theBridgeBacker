@@ -1,5 +1,5 @@
 let Manager = require('./Manager');
-let ModelUser = require('../models/modelUser')
+let User = require('../models/User')
 const { Client } = require('pg')
 
 class UserManager extends Manager {
@@ -8,27 +8,25 @@ class UserManager extends Manager {
     }
 
     static async getAllUsers() {
-        this.client.connect();
+        let client = new Client(this.clientParams)
         try {
-            
-            
-            let data = await this.client.query(this.queries.getAll)
-            let tempUsers;
+
+            client.connect();
+            let data = await client.query(this.queries.getAll)
+            let tempUsers = [];
             data.row.map(e => {
-                console.log(`Valor de row `);
-                console.log(...e);
-                tempUsers.push(new ModelUser(...e))
+                tempUsers.push(new User(e))
             })
-            console.log('Log tempuser')
-            console.log(tempUsers);
+            client.end();
             return tempUsers;
         } catch (error) {
+            client.end();
             console.log('Error en getAllUsers');
             console.log(error);
         }
-        this.client.end();
+
     }
-    
+
 }
 
 module.exports = UserManager;
