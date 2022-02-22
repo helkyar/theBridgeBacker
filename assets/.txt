@@ -1,0 +1,2 @@
+Aquí van imágenes y otros recursos estáticos del back
+Pongo cualquier mierda para que git no lo borre 
