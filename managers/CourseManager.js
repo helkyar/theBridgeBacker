@@ -1,6 +1,6 @@
 let Manager = require('./Manager');
-let courseModel = require('../models/courseModel')
-const { Client } = require('pg')
+const Course = require('../models/Course')
+
 
 class CourseManager extends Manager {
     static queries = {
@@ -8,25 +8,28 @@ class CourseManager extends Manager {
     }
 
     static async getAllCourses() {
-        this.client.connect();
+
         try {
 
-
+            this.client.connect();
             let data = await this.client.query(this.queries.getAll)
-            let tempCourses;
-            data.row.map(e => {
+            let tempCourses = [];
+            data.rows.map(e => {
                 console.log(`Valor de row `);
-                console.log(...e);
-                tempCourses.push(new courseModel(...e))
+                console.log(e);
+                tempCourses.push(new Course(e.id, e.title, e.startdate, e.enddate, e.type))
             })
+
             console.log('Log tempuser')
             console.log(tempUsers);
+            this.client.end();
             return tempCourses;
         } catch (error) {
+            this.client.end();
             console.log('Error en getAllCourses');
             console.log(error);
         }
-        this.client.end();
+
     }
 
 }

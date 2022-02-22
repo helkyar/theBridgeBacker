@@ -1,9 +1,9 @@
-const courseModel = require('../models/modelCourse')
+const Course = require('../models/Course')
 
 function courseController(req, res) {
     // res.status(200).json(data);
     console.log('Course controller');
-    users = courseModel.courseManager.getAllCourses()
+    users = Course.courseManager.getAllCourses()
 
 }
 
