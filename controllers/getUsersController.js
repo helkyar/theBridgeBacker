@@ -1,10 +1,10 @@
-const userModel = require('../models/modelUser')
+const userManager = require('../managers/UserManager')
 
 function userController(req, res) {
-    // res.status(200).json(data);
-    console.log('controller');
-    users = userModel.userManager.getAllUsers()
-    console.log(users);
+    console.log('User controller');
+    users = userManager.getAllUsers()
+        // res.status(200).json(data);
+
 }
 
 module.exports = userController;
