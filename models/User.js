@@ -7,9 +7,8 @@ class User {
   #login;
   #password;
   #rol;
-  static userManager = require("../managers/UserManager");
 
-  constructor(id, courseId, lastName, firstName, login, password, rol, email) {
+  constructor({id, courseId, lastName, firstName, login, password, rol, email}) {
     this.#id = id;
     this.#courseId = courseId;
     this.#lastName = lastName;
