@@ -1,10 +1,11 @@
-const CourseManager = require('../managers/CourseManager')
+const { user } = require("pg/lib/defaults");
+const CourseManager = require("../managers/CourseManager");
 
-function courseController(req, res) {
-    console.log('Course controller');
-    users = CourseManager.getAllCourses();
-    // res.status(200).json(data);
+async function courseController(req, res) {
+  console.log("Course controller");
+  const courses = await CourseManager.getAllCourses();
 
+  res.status(200).json(courses[0].getCourse());
 }
 
 module.exports = courseController;
