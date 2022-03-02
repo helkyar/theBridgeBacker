@@ -13,4 +13,15 @@ module.exports = class Class {
     this.#isPartial = isPartial;
     this.#coments = coments;
   }
+  getClasses() {
+    const classes = {
+      id: this.#id,
+      absentId: this.#absentId,
+      courseId: this.#courseId,
+      date: this.#date,
+      isParcial: this.#isPartial,
+      coments: this.#coments,
+    };
+    return classes;
+  }
 };
