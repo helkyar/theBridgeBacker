@@ -1,21 +1,23 @@
-module.exports = class participants {
+class Participants {
   #id;
-  #userId;
-  #courseId;
-  #date;
-  constructor({ id, userId, courseId, date }) {
+  #userid;
+  #courseid;
+  #createdat;
+  constructor({ id, userid, courseid, createdat }) {
     this.#id = id;
-    this.#userId = userId;
-    this.#courseId = courseId;
-    this.#date = date;
+    this.#userid = userid;
+    this.#courseid = courseid;
+    this.#createdat = createdat;
   }
   getParticipants() {
-    const participants = {
+    const data = {
       id: this.#id,
-      userId: this.#userId,
-      courseId: this.#courseId,
-      date: this.#date,
+      userid: this.#userid,
+      courseid: this.#courseid,
+      createdat: this.#createdat,
     };
-    return participants;
+
+    return data;
   }
-};
+}
+module.exports = Participants;

@@ -29,4 +29,4 @@ class UserManager extends Manager {
 
 module.exports = UserManager;
 
-// INSERT INTO users (lastname,firstname,login,password,email) VALUES ('castellano','aldo','aldologin','1234',aldo@correo.com);
+// INSERT INTO participants (createdat) VALUES ('2022-07-22');
