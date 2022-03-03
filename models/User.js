@@ -1,4 +1,4 @@
-class User {
+module.exports = class User {
   #id;
   #courseId;
   #lastName;
@@ -8,7 +8,16 @@ class User {
   #password;
   #rol;
 
-  constructor({id, courseId, lastName, firstName, login, password, rol, email}) {
+  constructor({
+    id,
+    courseId,
+    lastName,
+    firstName,
+    login,
+    password,
+    rol,
+    email,
+  }) {
     this.#id = id;
     this.#courseId = courseId;
     this.#lastName = lastName;
@@ -18,6 +27,4 @@ class User {
     this.#password = password;
     this.#rol = rol;
   }
-}
-
-module.exports = User;
+};
