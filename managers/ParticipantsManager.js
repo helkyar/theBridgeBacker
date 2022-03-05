@@ -7,17 +7,25 @@ class ParticipantsManager extends Manager {
     getAll: "SELECT * FROM participants",
     post: "INSERT INTO participants (createdat) VALUES ('2022-09-22')",
   };
-  static async getAllParticipants(cueri) {
+
+  static queries() {
+    const data = {
+      getAll: "SELECT * FROM participants",
+      post: "INSERT INTO participants (createdat) VALUES ('2022-09-22')",
+    };
+    return data;
+  }
+  static async getAllParticipants() {
     let client = new Client(this.clientParams);
     try {
       client.connect();
-      let data = await client.query(this.queries[cueri]);
+      let data = await client.query(this.queries.post);
       let tempParticipants = [];
 
-      data.rows.map((e) => {
-        tempParticipants.push(new Participants(e));
-      });
-      // console.log(tempParticipants);
+      // data.rows.map((e) => {
+      //   tempParticipants.push(new Participants(e).getParticipants());
+      // });
+      console.log(data);
       client.end();
       return tempParticipants;
     } catch (error) {

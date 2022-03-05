@@ -1,8 +1,8 @@
 const ParticipantsManager = require("../managers/ParticipantsManager");
 const participants = async (req, res) => {
-  let participants = await ParticipantsManager.getAllParticipants("post");
+  let participants = await ParticipantsManager.getAllParticipants();
   // console.log(req.body);
-  res.send("create");
+  res.status(200).json(participants);
 };
 
 module.exports = participants;
