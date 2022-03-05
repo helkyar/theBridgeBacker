@@ -2,13 +2,13 @@ const userManager = require("../managers/UserManager");
 let User = require("../models/User");
 
 async function postUserController(req, res) {
-    console.log("User controller");
+    console.log("User controller POST");
     var dataFront = req.body;
     let user = new User(dataFront)
     users = await userManager.postUsers(user.getObject());
-    console.log(users);
+    users ? res.status(200).json(users.map(e => e.getObject())) :
+        res.status(400).json({ error: "Can you write properly nub" })
 
-    res.status(200).json("todoOk?");
 }
 
 module.exports = postUserController;

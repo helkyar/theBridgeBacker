@@ -5,21 +5,25 @@ const { Client } = require("pg");
 class UserManager extends Manager {
     static queries = {
         getAll: "SELECT * FROM users", // Array de users
-        postUser: "INSERT INTO users (lastName,firstName,login,password,email) VALUES ($1,$2,$3,$4,$5)", //Array user con user creado
+        postUser: "INSERT INTO users (lastName,firstName,login,password,email) VALUES ($1,$2,$3,$4,$5) RETURNING *;", //Array user con user creado
         patchUser: "UPDATE users SET lastName = $1,firstName = $2,login = $3,password = $4,email = $5 WHERE id = $6", //Array user con user modificado
-        deleteUser: "" //Array user con user eliminado
+        deleteUser: "DELETE FROM users WHERE id=$1" //Array user con user eliminado
     };
 
     static async getAllUsers() {
         return await this.queryExec(this.queries.getAll, User)
     }
-    static async postUsers({ lastName, firstName, login, password, email }) {
-        const params = [lastName, firstName, login, password, email];
+    static async postUsers({ lastname, firstname, login, password, email }) {
+        const params = [lastname, firstname, login, password, email];
+
         return await this.queryExec(this.queries.postUser, User, params);
     }
-    static async patchUser({ id, lastName, firstName, login, password, email }) {
-        const params = [lastName, firstName, login, password, email, id];
+    static async patchUsers({ id, lastname, firstname, login, password, email }) {
+        const params = [lastname, firstname, login, password, email, id];
         return await this.queryExec(this.queries.patchUser, User, params);
+    }
+    static async deleteUsers({ id }) {
+        return await this.queryExec(this.queries.deleteUser, User, [id]);
     }
 
 }
