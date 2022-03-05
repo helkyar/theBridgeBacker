@@ -1,13 +1,11 @@
-const { user } = require("pg/lib/defaults");
-const ParticipantsManager = require("../managers/ParticipantsManager");
+const participantManager = require("../managers/ParticipantsManager");
 
 async function participantsController(req, res) {
-  let participants = await ParticipantsManager.getAllParticipants(
-    ParticipantsManager.queries.getAll,
-  );
-  // console.log(participants.map((e) => e.getParticipants()));
-  // console.log(participants[0].id);
-  res.status(200).json(participants);
+  console.log("User controller");
+  participants = await participantManager.getAllParticipants();
+  console.log("result getAll");
+  console.log(participants);
+  res.status(200).json(participants.map((e) => e.getObject()));
 }
 
 module.exports = participantsController;
