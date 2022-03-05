@@ -9,16 +9,16 @@ module.exports = class User {
 
     constructor({
         id,
-        lastName,
-        firstName,
+        lastname,
+        firstname,
         login,
         password,
         rol,
         email,
     }) {
         this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
+        this.lastName = lastname;
+        this.firstName = firstname;
         this.email = email;
         this.login = login;
         this.password = password;
@@ -28,8 +28,8 @@ module.exports = class User {
     getObject() {
         return {
             id: this.id,
-            lastName: this.lastName,
-            firstName: this.firstName,
+            lastname: this.lastname,
+            firstname: this.firstname,
             login: this.login,
             password: this.password,
             email: this.email,

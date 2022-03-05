@@ -1,14 +1,14 @@
 const userManager = require("../managers/UserManager");
 let User = require("../models/User");
 
-async function postUserController(req, res) {
+function patchUserController(req, res) {
     console.log("User controller");
     var dataFront = req.body;
     let user = new User(dataFront)
-    users = await userManager.postUsers(user.getObject());
+    users = userManager.patchUsers(user.getObject());
     console.log(users);
 
-    res.status(200).json("todoOk?");
+    res.status(200).json("todoOkpatch?");
 }
 
-module.exports = postUserController;
+module.exports = patchUserController;

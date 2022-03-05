@@ -14,12 +14,13 @@ class Manager {
         let client = new Client(this.clientParams);
         try {
             client.connect();
-            let data = await client.query(params ? query : query, params);
+            let data = params ? await client.query(query, params) :
+                await client.query(query);
             let tempUsers = [];
             data.rows.map((e) => {
                 tempUsers.push(new model(e));
             });
-            // console.log(tempUsers);
+            console.log(tempUsers);
             return tempUsers;
         } catch (error) {
             console.log("Error en managerUser");
