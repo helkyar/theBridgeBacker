@@ -1,12 +1,12 @@
 const participantManager = require("../../managers/ParticipantsManager");
-let Participant = require("../../models/Participants");
+const Participant = require("../../models/Participants");
 
 function deleteParticipantController(req, res) {
-  var dataFront = req.body;
-  let participant = new Participant(dataFront);
+  const dataFront = req.body;
+  const participant = new Participant(dataFront);
   participantManager.deleteParticipants(participant.getObject());
 
-  res.status(200).json("todoOkdelete?");
+  res.status(200).json("todo delete?");
 }
 
 module.exports = deleteParticipantController;

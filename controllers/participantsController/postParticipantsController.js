@@ -1,11 +1,10 @@
 const participantManager = require("../../managers/ParticipantsManager");
-let Participant = require("../../models/Participants");
+const Participant = require("../../models/Participants");
 
 async function postParticipantController(req, res) {
-  console.log("Participant controller POST");
-  var dataFront = req.body;
-  let participant = new Participant(dataFront);
-  let participants = await participantManager.postParticipants(
+  const dataFront = req.body;
+  const participant = new Participant(dataFront);
+  const participants = await participantManager.postParticipants(
     participant.getObject(),
   );
 
