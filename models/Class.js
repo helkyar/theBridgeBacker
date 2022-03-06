@@ -1,27 +1,20 @@
 module.exports = class Class {
   #id;
-  #absentId;
   #courseId;
-  #date;
-  #isPartial;
-  #coments;
-  constructor({ id, absentId, courseId, date, isPartial, coments }) {
+  #userId;
+  #createdAt;
+  constructor({ id, courseId, userId, createdAt }) {
     this.#id = id;
-    this.#absentId = absentId;
     this.#courseId = courseId;
-    this.#date = date;
-    this.#isPartial = isPartial;
-    this.#coments = coments;
+    this.#userId = userId;
+    this.#createdAt = createdAt;
   }
   getClasses() {
-    const classes = {
+    return {
       id: this.#id,
-      absentId: this.#absentId,
       courseId: this.#courseId,
-      date: this.#date,
-      isParcial: this.#isPartial,
-      coments: this.#coments,
+      userId: this.#userId,
+      createdAt: this.#createdAt,
     };
-    return classes;
   }
 };

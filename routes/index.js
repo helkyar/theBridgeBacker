@@ -6,6 +6,7 @@ router.use("/course", require("./courses"));
 router.use("/user", require("./users"));
 router.use("/rol", require("./rol"));
 router.use("/class", require("./classes"));
+router.use("/assist", require("./assist"));
 // router.use('', require(''));
 
 module.exports = router;
