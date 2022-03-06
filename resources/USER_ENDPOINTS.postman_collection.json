@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "613a2a88-0062-46dc-bba1-fda30e22151f",
+		"name": "USER ENDPOINTS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADD USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"lastname\": \"Aldo final\",\r\n        \"firstname\": \"modi\",\r\n        \"email\": \"aldo@tbg.com\",\r\n        \"login\": \"ald33\",\r\n        \"password\": \"jald3\",\r\n        \"rol\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/user/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"user",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/api/user/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE USERS",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": \"076f6046-0797-49f4-9192-017271795a94\",\r\n        \"lastname\": \"modificado1\",\r\n        \"firstname\": \"modificado1\",\r\n        \"email\": \"modificado1@tbg.com\",\r\n        \"login\": \"javt\",\r\n        \"password\": \"javi2\",\r\n        \"rol\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/user/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE USER",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"d70dc523-ff59-42e9-a42b-37581fe9c015\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/user/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"user",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET USER BY ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\"id\":\"d70dc523-ff59-42e9-a42b-37581fe9c015\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/api/user/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"api",
+						"user",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

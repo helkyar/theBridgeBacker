@@ -12,10 +12,13 @@ module.exports = class Course {
     this.#endDate = endDate;
     this.#type = type;
   }
-  getCourse() {
-    const data = {
+  getObject() {
+    return {
       id: this.#id,
+      title: this.#title,
+      startDate: this.#startDate,
+      endDate: this.#endDate,
+      type: this.#type,
     };
-    return data;
   }
 };

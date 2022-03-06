@@ -14,53 +14,62 @@ CREATE TABLE roles(
 
 CREATE TABLE users (
     id  uuid DEFAULT uuid_generate_v4 (),
-    courseId  uuid NOT NULL,
-    lastName varchar(255) NOT NULL,
-    firstName varchar(255),
-    login varchar(255),
+     lastName varchar(255) NOT NULL,
+    firstName varchar(255) NOT NULL,
+    login varchar(255) UNIQUE,
     password varchar(255),
     rol uuid,
     email varchar(255),
     PRIMARY KEY (id),
-    CONSTRAINT FK_Cousers FOREIGN KEY (courseId)
-    REFERENCES courses(id),
     CONSTRAINT FK_Rols FOREIGN KEY (rol)
     REFERENCES roles(id)
 );
 
 CREATE TABLE participants (
     id   uuid DEFAULT uuid_generate_v4 (),
-    userId uuid NOT NULL,
-    courseId uuid NOT NULL,
-    createdAt DATE NOT NULL,
+    lastName varchar(255) NOT NULL,
+    firstName varchar(255),
+     courseId uuid NOT NULL,
+    createdAt DATE ,
     PRIMARY KEY (id),
-    CONSTRAINT FK_Cousers FOREIGN KEY (courseId)
+    CONSTRAINT FK_Courses FOREIGN KEY (courseId)
     REFERENCES courses(id)
 );
 
 CREATE TABLE classes (
     id   uuid DEFAULT uuid_generate_v4 (),
-    absentId uuid NOT NULL,
+ userId uuid NOT NULL,
     courseId uuid NOT NULL,
-    date DATE NOT NULL,
-    isPartial boolean NOT NULL,
-    coments VARCHAR(255),
+    createdAt DATE NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT FK_Cousers FOREIGN KEY (courseId)
-    REFERENCES courses(id)
+    REFERENCES courses(id),
+  CONSTRAINT FK_Users FOREIGN KEY (userId)
+ REFERENCES users(id)
 );
 
-CREATE TABLE absents (
+CREATE TABLE userCourses(
+ id   uuid DEFAULT uuid_generate_v4 (),
+  userId uuid NOT NULL,
+    courseId uuid NOT NULL,
+    PRIMARY KEY (id),
+    CONSTRAINT FK_Courses FOREIGN KEY (courseId)
+    REFERENCES courses(id),
+  CONSTRAINT FK_Users FOREIGN KEY (userId)
+ REFERENCES users(id)
+);
+
+CREATE TABLE assistance(
     id  uuid DEFAULT uuid_generate_v4 (),
     participantId uuid NOT NULL,
     classId uuid NOT NULL,
-    date DATE NOT NULL,
     isPartial boolean NOT NULL,
     coments VARCHAR(255),
+    assistance smallInt NOT NULL, 
     PRIMARY KEY (id),
-    CONSTRAINT FK_Cousers FOREIGN KEY (classId)
+    CONSTRAINT FK_Classes FOREIGN KEY (classId)
     REFERENCES classes(id),
-    CONSTRAINT FK_Users FOREIGN KEY (participantId)
+    CONSTRAINT FK_Participant FOREIGN KEY (participantId)
     REFERENCES participants(id)
 );
 

@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
-router.get("/all", require("../controllers/getCoursesController"));
-router.post("/add", require("../controllers/postCoursesController"));
-router.patch("/:id", require("../controllers/patchCoursesController"));
-router.delete("/:id", require("../controllers/delCoursesController"));
+router.get("/all", require("../controllers/courses/getCourses"));
+router.get("/id", require("../controllers/courses/getCourse"));
+router.post("/add", require("../controllers/courses/postCourses"));
+router.patch("/update", require("../controllers/courses/patchCourses"));
+router.delete("/delete", require("../controllers/courses/deleteCourses"));
 
 module.exports = router;
