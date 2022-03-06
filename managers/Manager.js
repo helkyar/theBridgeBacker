@@ -17,15 +17,15 @@ class Manager {
         ? await client.query(query, params)
         : await client.query(query);
       let tempUsers = [];
-      console.log(data);
+      // console.log(data);
       data.rows.map((e) => {
         tempUsers.push(new model(e));
       });
       // console.log(tempUsers);
       return tempUsers;
     } catch (error) {
-      // console.log("Error en managerUser");
-      // console.log(error);
+      console.log("Error en managerUser");
+      console.log(error);
       console.log(query);
       return undefined;
     } finally {

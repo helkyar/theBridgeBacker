@@ -1,5 +1,5 @@
-const participantManager = require("../managers/ParticipantsManager");
-let Participant = require("../models/Participants");
+const participantManager = require("../../managers/ParticipantsManager");
+let Participant = require("../../models/Participants");
 
 async function postParticipantController(req, res) {
   console.log("Participant controller POST");
@@ -8,7 +8,6 @@ async function postParticipantController(req, res) {
   let participants = await participantManager.postParticipants(
     participant.getObject(),
   );
-  console.log(participant);
 
   participant
     ? res.status(200).json(participants.map((e) => e.getObject()))

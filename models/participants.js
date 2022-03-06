@@ -3,14 +3,14 @@ module.exports = class Participant {
   #lastname;
   #firstname;
   #courseid;
-  #createdate;
+  #createdat;
 
-  constructor({ id, lastname, firstname, courseid, createdate }) {
+  constructor({ id, lastname, firstname, courseid, createdat }) {
     this.#id = id;
     this.#lastname = lastname;
     this.#firstname = firstname;
     this.#courseid = courseid;
-    this.#createdate = createdate;
+    this.#createdat = createdat;
   }
 
   getObject() {
@@ -19,7 +19,7 @@ module.exports = class Participant {
       lastname: this.#lastname,
       firstname: this.#firstname,
       courseid: this.#courseid,
-      createdate: this.#createdate,
+      createdat: this.#createdat,
     };
   }
 };

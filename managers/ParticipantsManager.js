@@ -1,33 +1,31 @@
 let Manager = require("./Manager");
-let Participants = require("../models/Participants");
+let Participant = require("../models/Participants");
 
 class ParticipantsManager extends Manager {
   static queries = {
     getAll: "SELECT * FROM participants", // Array de participants
     getParticipant: "SELECT * FROM participants WHERE id=$1",
     postParticipant:
-      "INSERT INTO participants (lastname,firstname,courseid,createdate) VALUES ($1,$2,$3,$4) RETURNING *;", //Array participant con user creado
+      "INSERT INTO participants (lastname,firstname,courseid,createdat) VALUES ($1,$2,$3,$4) RETURNING *;", //Array participant con user creado
     patchParticipant:
-      "UPDATE participants SET lastName = $1,firstName = $2,login = $3,createdate = $4 WHERE id = $6", //Array participant con user modificado
-    deleteParticipant: "DELETE FROM participants WHERE id=$1", //Array participant con user eliminado
+      "UPDATE participants SET lastname = $1,firstname = $2,courseid = $3,createdat = $4 WHERE id = $5", //Array participant con user modificado
+    deleteParticipant: "DELETE FROM participants WHERE id=$1 RETURNING *", //Array participant con user eliminado
   };
 
   static async getAllParticipants() {
-    return await this.queryExec(this.queries.getAll, Participants);
+    return await this.queryExec(this.queries.getAll, Participant);
   }
 
   static async getParticipant({ id }) {
-    return await this.queryExec(this.queries.getParticipant, Participants, [
-      id,
-    ]);
+    return await this.queryExec(this.queries.getParticipant, Participant, [id]);
   }
 
-  static async postParticipants({ lastname, firstname, courseid, createdate }) {
-    const params = [lastname, firstname, courseid, createdate];
+  static async postParticipants({ lastname, firstname, courseid, createdat }) {
+    const params = [lastname, firstname, courseid, createdat];
 
     return await this.queryExec(
       this.queries.postParticipant,
-      Participants,
+      Participant,
       params,
     );
   }
@@ -36,17 +34,17 @@ class ParticipantsManager extends Manager {
     lastname,
     firstname,
     courseid,
-    createdate,
+    createdat,
   }) {
-    const params = [lastname, firstname, courseid, createdate, id];
+    const params = [lastname, firstname, courseid, createdat, id];
     return await this.queryExec(
       this.queries.patchParticipant,
-      Participants,
+      Participant,
       params,
     );
   }
-  static async deleteParticipant({ id }) {
-    return await this.queryExec(this.queries.deleteParticipant, Participants, [
+  static async deleteParticipants({ id }) {
+    return await this.queryExec(this.queries.deleteParticipant, Participant, [
       id,
     ]);
   }
