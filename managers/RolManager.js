@@ -1,35 +1,31 @@
-let Manager = require('./Manager');
-const Rol = require('../models/Rol')
-const { Client } = require('pg')
+let Manager = require("./Manager");
+let Rol = require("../models/Rol");
 
+class RolesManager extends Manager {
+  static queries = {
+    getAll: "SELECT * FROM roles", // Array de roles
 
-class RolManager extends Manager {
-    static queries = {
-        getAll: 'SELECT * FROM rol'
-    }
+    postRol: "INSERT INTO roles (name) VALUES ($1) RETURNING *;", //Array rol
+    patchRol: "UPDATE roles SET name = $1 WHERE id = $2", //Array participant con user modificado
+    deleteRol: "DELETE FROM roles WHERE id=$1 RETURNING *", //Array participant con user eliminado
+  };
 
-    static async getAllRoles() {
-        //Necessary to create different object for each query, otherwise it gives error.
-        let client = new Client(this.clientParams)
-        try {
-            client.connect();
-            let data = await client.query(this.queries.getAll)
-            let tempCourses = [];
-            data.rows.map(e => {
-                //It is not necessary to pass all the parameters separately, 
-                //since the model constructor does the destructuring.
-                tempCourses.push(new Rol(e));
-            })
-            client.end();
-            return tempCourses;
-        } catch (error) {
-            client.end();
-            console.log('Error en getAllRoles');
-            console.log(error);
-        }
+  static async getAllRoles() {
+    return await this.queryExec(this.queries.getAll, Rol);
+  }
 
-    }
+  static async postRol({ name }) {
+    const params = [name];
 
+    return await this.queryExec(this.queries.postRol, Rol, params);
+  }
+  static async patchRol({ id, name }) {
+    const params = [name, id];
+    return await this.queryExec(this.queries.patchRol, Rol, params);
+  }
+  static async deleteRol({ id }) {
+    return await this.queryExec(this.queries.deleteRol, Rol, [id]);
+  }
 }
 
-module.exports = CourseManager;
+module.exports = RolesManager;
