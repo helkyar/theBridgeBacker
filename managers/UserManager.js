@@ -5,6 +5,7 @@ class UserManager extends Manager {
   static queries = {
     getAll: "SELECT * FROM users", // Array de users
     getUser: "SELECT * FROM users WHERE id=$1",
+    getUserlogin: "SELECT * FROM users WHERE login=$1",
     postUser:
       "INSERT INTO users (lastName,firstName,login,password,email) VALUES ($1,$2,$3,$4,$5) RETURNING *;", //Array user con user creado
     patchUser:
@@ -19,7 +20,9 @@ class UserManager extends Manager {
   static async getUser({ id }) {
     return await this.queryExec(this.queries.getUser, User, [id]);
   }
-
+  static async userExists({ login }) {
+    return await this.queryExec(this.queries.getUserlogin, User, [login]);
+  }
   static async postUsers({ lastname, firstname, login, password, email }) {
     const params = [lastname, firstname, login, password, email];
 
