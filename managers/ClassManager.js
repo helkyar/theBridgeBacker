@@ -6,9 +6,9 @@ class ClassManager extends Manager {
     getAll: "SELECT * FROM classes",
     getClass: "SELECT * FROM classes WHERE id=$1",
     postClass:
-      "INSERT INTO classes (userId, courseId, createdAt) VALUES ($1,$2,$3) RETURNING *;", //Array class con class creado
+      "INSERT INTO classes (userid, courseid, createdat) VALUES ($1,$2,$3) RETURNING *;", //Array class con class creado
     patchClass:
-      "UPDATE classes SET userId=$1, courseId=$2, createdAt=$3 WHERE id = $4 RETURNING *", //Array class con class modificado
+      "UPDatE classes SET userid=$1, courseid=$2, createdat=$3 WHERE id = $4 RETURNING *", //Array class con class modificado
     deleteClass: "DELETE FROM classes WHERE id=$1", //Array class con class eliminado
   };
 
@@ -20,12 +20,12 @@ class ClassManager extends Manager {
     return await this.queryExec(this.queries.getClass, Class, [id]);
   }
 
-  static async postClasss({ userId, courseId, createdAt }) {
-    const params = [userId, courseId, createdAt];
+  static async postClasss({ userid, courseid, createdat }) {
+    const params = [userid, courseid, createdat];
     return await this.queryExec(this.queries.postClass, Class, params);
   }
-  static async patchClasss({ id, userId, courseId, createdAt }) {
-    const params = [userId, courseId, createdAt, id];
+  static async patchClasss({ id, userid, courseid, createdat }) {
+    const params = [userid, courseid, createdat, id];
     return await this.queryExec(this.queries.patchClass, Class, params);
   }
   static async deleteClasss({ id }) {

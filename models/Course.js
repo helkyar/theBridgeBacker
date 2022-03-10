@@ -1,23 +1,23 @@
 module.exports = class Course {
   #id;
   #title;
-  #startDate;
-  #endDate;
+  #startdate;
+  #enddate;
   #type;
   //Using destructuring to recieve the data.
-  constructor({ id, title, startDate, endDate, type }) {
+  constructor({ id, title, startdate, enddate, type }) {
     this.#id = id;
     this.#title = title;
-    this.#startDate = startDate;
-    this.#endDate = endDate;
+    this.#startdate = startdate;
+    this.#enddate = enddate;
     this.#type = type;
   }
   getObject() {
     return {
       id: this.#id,
       title: this.#title,
-      startDate: this.#startDate,
-      endDate: this.#endDate,
+      startdate: this.#startdate,
+      enddate: this.#enddate,
       type: this.#type,
     };
   }
