@@ -5,10 +5,9 @@ async function getUserCourseController(req, res) {
   console.log("Course controller");
   var dataFront = req.params;
   console.log(dataFront);
-  let course = new Course(dataFront);
-  const courses = await CourseManager.getUserCourse(course.getObject());
+  const courses = await CourseManager.getUserCourses(dataFront);
   courses[0] !== undefined
-    ? res.status(200).json(course.getObject())
+    ? res.status(200).json(courses.map((e) => e.getObject()))
     : res.status(404).json({ error: "No existe." });
 }
 
