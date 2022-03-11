@@ -15,7 +15,8 @@ async function checkLoginController(req, res) {
     return res.status(400).json({ error: "credenciales incorrectas" });
   }
 
-  const { login, id, password } = user[0].getObject();
+
+  const { rol, login, id, password } = user[0].getObject();
   const validPassword = await bcrypt.compare(req.body.password, password);
   if (!validPassword) {
     return res.status(400).json({ error: "credenciales incorrectas" });
@@ -29,7 +30,8 @@ async function checkLoginController(req, res) {
     process.env.TOKEN_SECRET
   );
 
-  res.status(200).json({ token, login, id });
+  res.status(200).json({ token, rol, login, id });
+
 }
 
 module.exports = checkLoginController;

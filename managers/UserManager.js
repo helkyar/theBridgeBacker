@@ -2,6 +2,7 @@ let Manager = require("./Manager");
 let User = require("../models/User");
 
 class UserManager extends Manager {
+
     static queries = {
         getAll: "SELECT * FROM users", // Array de users
         getUser: "SELECT * FROM users WHERE id=$1",
@@ -16,13 +17,20 @@ class UserManager extends Manager {
         return await this.queryExec(this.queries.getAll, User);
     }
 
+
     static async userExists({ login }) {
         return await this.queryExec(this.queries.getUserlogin, User, [login]);
     }
+
+
+
     static async getUser({ id }) {
         return await this.queryExec(this.queries.getUser, User, [id]);
     }
 
+  static async userExists({ login }) {
+    return await this.queryExec(this.queries.getUserlogin, User, [login]);
+  }
     static async postUsers({ lastname, firstname, login, password, email, rol }) {
         const params = [lastname, firstname, login, password, email, rol];
         return await this.queryExec(this.queries.postUser, User, params);
@@ -34,6 +42,10 @@ class UserManager extends Manager {
     static async deleteUsers({ id }) {
         return await this.queryExec(this.queries.deleteUser, User, [id]);
     }
+
+
+}
+
 
     module.exports = UserManager;
 

@@ -48,7 +48,7 @@ CREATE TABLE classes (
  REFERENCES users(id)
 );
 
-CREATE TABLE userCourses(
+CREATE TABLE usercourses(
  id   uuid DEFAULT uuid_generate_v4 (),
   userId uuid NOT NULL,
     courseId uuid NOT NULL,
