@@ -17,8 +17,8 @@ class UserCourseManager extends Manager {
     return await this.queryExec(this.queries.getUserCourse, UserCourse, [id]);
   }
 
-  static async postUserCourses({ title, startdate, enddate, type }) {
-    const params = [title, startdate, enddate, type];
+  static async postUserCourses({ userid, courseid }) {
+    const params = [userid, courseid];
     return await this.queryExec(
       this.queries.postUserCourse,
       UserCourse,
