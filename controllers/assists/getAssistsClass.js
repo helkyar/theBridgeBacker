@@ -3,7 +3,7 @@ let Assist = require("../../models/Assist");
 
 async function getAssistClassController(req, res) {
   console.log("Class controller");
-  var dataFront = req.body;
+  var dataFront = req.params;
   let assist = new Assist(dataFront);
 
   //   console.log("classm", classm.getObject());
