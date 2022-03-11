@@ -5,6 +5,7 @@ async function postClassController(req, res) {
   console.log("Class controller");
   let dataFront = req.body;
   let classs = new Class(dataFront);
+  console.log(classs.getObject());
   const classes = await ClassManager.postClasss(classs.getObject());
   classs
     ? res.status(200).json(classes.map((e) => e.getObject()))

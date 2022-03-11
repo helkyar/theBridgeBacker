@@ -9,7 +9,7 @@ module.exports = class Class {
     this.#userid = userid;
     this.#createdat = createdat;
   }
-  getClasses() {
+  getObject() {
     return {
       id: this.#id,
       courseid: this.#courseid,
