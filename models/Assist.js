@@ -1,25 +1,25 @@
 module.exports = class Assist {
   #id;
-  #participantId;
-  #classId;
-  #isPartial;
+  #participantid;
+  #classid;
+  #ispartial;
   #coments;
   #assistance;
   //Using destructuring to recieve the data.
-  constructor({ id, participantId, classId, isPartial, coments, assistance }) {
+  constructor({ id, participantid, classid, ispartial, coments, assistance }) {
     this.#id = id;
-    this.#participantId = participantId;
-    this.#classId = classId;
-    this.#isPartial = isPartial;
+    this.#participantid = participantid;
+    this.#classid = classid;
+    this.#ispartial = ispartial;
     this.#coments = coments;
     this.#assistance = assistance;
   }
   getObject() {
     return {
       id: this.#id,
-      participantId: this.#participantId,
-      classId: this.#classId,
-      isPartial: this.#isPartial,
+      participantid: this.#participantid,
+      classid: this.#classid,
+      ispartial: this.#ispartial,
       coments: this.#coments,
       assistance: this.#assistance,
     };
