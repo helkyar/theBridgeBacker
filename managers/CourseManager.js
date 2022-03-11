@@ -14,6 +14,9 @@ class CourseManager extends Manager {
     deleteCourse: "DELETE FROM courses WHERE id=$1", //Array course con course eliminado
   };
 
+    static async getAllCourses() {
+        return await this.queryExec(this.queries.getAll, Course);
+    }
   static async getCourse({ id }) {
     return await this.queryExec(this.queries.getCourse, Course, [id]);
   }
@@ -32,7 +35,6 @@ class CourseManager extends Manager {
   static async deleteCourses({ id }) {
     return await this.queryExec(this.queries.deleteCourse, Course, [id]);
   }
-
 }
 
 module.exports = CourseManager;

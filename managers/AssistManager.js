@@ -2,6 +2,7 @@ let Manager = require("./Manager");
 const Assist = require("../models/Assist");
 
 class AssistManager extends Manager {
+
   static queries = {
     getAll: "SELECT * FROM assistance;",
     getAssist: "SELECT * FROM assistance WHERE id=$1;",
@@ -12,10 +13,11 @@ class AssistManager extends Manager {
     deleteAssist: "DELETE FROM assistance WHERE id=$1;", //Array assist con assist eliminado
   };
 
-  static async getAllAssists() {
-    return await this.queryExec(this.queries.getAll, Assist);
-  }
 
+    static async getAllAssists() {
+        return await this.queryExec(this.queries.getAll, Assist);
+    }
+  
   static async getAssist({ id }) {
     return await this.queryExec(this.queries.getAssist, Assist, [id]);
   }
@@ -46,6 +48,7 @@ class AssistManager extends Manager {
   static async deleteAssists({ id }) {
     return await this.queryExec(this.queries.deleteAssist, Assist, [id]);
   }
+
 }
 
 module.exports = AssistManager;
