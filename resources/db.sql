@@ -29,7 +29,7 @@ CREATE TABLE participants (
     id   uuid DEFAULT uuid_generate_v4 (),
     lastName varchar(255) NOT NULL,
     firstName varchar(255),
-     courseId uuid NOT NULL,
+    courseId uuid NOT NULL,
     createdAt DATE ,
     PRIMARY KEY (id),
     CONSTRAINT FK_Courses FOREIGN KEY (courseId)
