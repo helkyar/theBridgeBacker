@@ -5,6 +5,7 @@ class ParticipantsManager extends Manager {
   static queries = {
     getAll: "SELECT * FROM participants", // Array de participants
     getParticipant: "SELECT * FROM participants WHERE id=$1",
+    getParticipantCourse: "SELECT * FROM participants WHERE courseid=$1",
     postParticipant:
       "INSERT INTO participants (lastname,firstname,courseid,createdat) VALUES ($1,$2,$3,$4) RETURNING *;", //Array participant con user creado
     patchParticipant:
@@ -18,6 +19,13 @@ class ParticipantsManager extends Manager {
 
   static async getParticipant({ id }) {
     return await this.queryExec(this.queries.getParticipant, Participant, [id]);
+  }
+  static async getParticipantCourse({ courseid }) {
+    return await this.queryExec(
+      this.queries.getParticipantCourse,
+      Participant,
+      [courseid],
+    );
   }
 
   static async postParticipants({ lastname, firstname, courseid, createdat }) {

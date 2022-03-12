@@ -3,6 +3,10 @@ router.get(
   "/all",
   require("../controllers/participantsController/getParticipantsConttoller"),
 );
+router.get(
+  "/courseid/:courseid",
+  require("../controllers/participantsController/getParticipantsConttoller"),
+);
 router.post(
   "/add",
   require("../controllers/participantsController/postParticipantsController"),

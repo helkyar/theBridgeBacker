@@ -3,7 +3,7 @@ const router = require("express").Router();
 router.get("/all", require("../controllers/assists/getAssists"));
 router.get("/id", require("../controllers/assists/getAssist"));
 router.get(
-  "/assistance/:classid",
+  "/classid/:classid",
   require("../controllers/assists/getAssistsClass"),
 );
 router.post("/add", require("../controllers/assists/postAssists"));
