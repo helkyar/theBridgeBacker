@@ -14,12 +14,12 @@ CREATE TABLE roles(
 
 CREATE TABLE users (
     id  uuid DEFAULT uuid_generate_v4 (),
-     lastName varchar(255) NOT NULL,
+    lastName varchar(255) NOT NULL,
     firstName varchar(255) NOT NULL,
     login varchar(255) UNIQUE,
     password varchar(255),
     rol uuid,
-    email varchar(255),
+    email varchar(255) UNIQUE,
     PRIMARY KEY (id),
     CONSTRAINT FK_Rols FOREIGN KEY (rol)
     REFERENCES roles(id)
@@ -29,7 +29,7 @@ CREATE TABLE participants (
     id   uuid DEFAULT uuid_generate_v4 (),
     lastName varchar(255) NOT NULL,
     firstName varchar(255),
-     courseId uuid NOT NULL,
+    courseId uuid NOT NULL,
     createdAt DATE ,
     PRIMARY KEY (id),
     CONSTRAINT FK_Courses FOREIGN KEY (courseId)
@@ -48,7 +48,7 @@ CREATE TABLE classes (
  REFERENCES users(id)
 );
 
-CREATE TABLE userCourses(
+CREATE TABLE usercourses(
  id   uuid DEFAULT uuid_generate_v4 (),
   userId uuid NOT NULL,
     courseId uuid NOT NULL,

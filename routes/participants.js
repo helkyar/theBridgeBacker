@@ -1,22 +1,26 @@
 const router = require("express").Router();
 router.get(
   "/all",
-  require("../controllers/participantsController/getParticipantsConttoller"),
+  require("../controllers/participants/getParticipantsConttoller"),
 );
 router.get(
   "/courseid/:courseid",
-  require("../controllers/participantsController/getParticipantsConttoller"),
+  require("../controllers/participants/getParticipantsConttoller"),
 );
 router.post(
   "/add",
-  require("../controllers/participantsController/postParticipantsController"),
+  require("../controllers/participants/postParticipantsController"),
 );
 router.patch(
   "/update",
-  require("../controllers/participantsController/patchparticipantsController"),
+  require("../controllers/participants/patchparticipantsController"),
 );
 router.delete(
   "/delete",
-  require("../controllers/participantsController/deleteParticipantsController"),
+  require("../controllers/participants/deleteParticipantsController"),
+);
+router.get(
+  "/count/:courseid",
+  require("../controllers/participants/getParticipantsCount"),
 );
 module.exports = router;

@@ -7,7 +7,7 @@ async function postClassController(req, res) {
   let classs = new Class(dataFront);
   console.log(classs.getObject());
   const classes = await ClassManager.postClasss(classs.getObject());
-  classs
+  classes
     ? res.status(200).json(classes.map((e) => e.getObject()))
     : res.status(400).json({ error: "Can you write properly nub" });
 }

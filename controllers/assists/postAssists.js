@@ -5,6 +5,7 @@ async function postAssistController(req, res) {
   console.log("Assist controller");
   let dataFront = req.body;
   let assist = new Assist(dataFront);
+  console.log("front", dataFront);
   const assists = await AssistManager.postAssists(assist.getObject());
   assists
     ? res.status(200).json(assists.map((e) => e.getObject()))

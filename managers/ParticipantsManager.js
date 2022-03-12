@@ -11,6 +11,7 @@ class ParticipantsManager extends Manager {
     patchParticipant:
       "UPDATE participants SET lastname = $1,firstname = $2,courseid = $3,createdat = $4 WHERE id = $5", //Array participant con user modificado
     deleteParticipant: "DELETE FROM participants WHERE id=$1 RETURNING *", //Array participant con user eliminado
+    countParticipant: "SELECT id FROM participants where courseid = $1;",
   };
 
   static async getAllParticipants() {
@@ -34,7 +35,7 @@ class ParticipantsManager extends Manager {
     return await this.queryExec(
       this.queries.postParticipant,
       Participant,
-      params,
+      params
     );
   }
   static async patchParticipant({
@@ -48,12 +49,17 @@ class ParticipantsManager extends Manager {
     return await this.queryExec(
       this.queries.patchParticipant,
       Participant,
-      params,
+      params
     );
   }
   static async deleteParticipants({ id }) {
     return await this.queryExec(this.queries.deleteParticipant, Participant, [
       id,
+    ]);
+  }
+  static async getParticipantsCount({ courseid }) {
+    return await this.queryExec(this.queries.countParticipant, Participant, [
+      courseid,
     ]);
   }
 }
