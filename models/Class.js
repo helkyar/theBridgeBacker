@@ -1,20 +1,20 @@
 module.exports = class Class {
-  #id;
+  id;
   #courseid;
   #userid;
-  #createdat;
+  createdat;
   constructor({ id, courseid, userid, createdat }) {
-    this.#id = id;
+    this.id = id;
     this.#courseid = courseid;
     this.#userid = userid;
-    this.#createdat = createdat;
+    this.createdat = createdat;
   }
   getObject() {
     return {
-      id: this.#id,
+      id: this.id,
       courseid: this.#courseid,
       userid: this.#userid,
-      createdat: this.#createdat,
+      createdat: this.createdat,
     };
   }
 };
