@@ -6,7 +6,7 @@ class CourseManager extends Manager {
     getAll: "SELECT * FROM courses",
     getCourse: "SELECT * FROM courses WHERE id=$1",
     getUserCourses:
-      "SELECT * FROM courses INNER JOIN usercourses ON courses.id = usercourses.courseid WHERE usercourses.userid=$1",
+      "SELECT c.id, c.title, c.startdate, c.enddate, c.type FROM courses c JOIN usercourses ON c.id = usercourses.courseid WHERE usercourses.userid=$1",
     postCourse:
       "INSERT INTO courses (title,startdate,enddate,type) VALUES ($1,$2,$3,$4) RETURNING *;", //Array course con course creado
     patchCourse:
