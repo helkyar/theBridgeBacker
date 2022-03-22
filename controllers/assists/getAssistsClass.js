@@ -6,7 +6,7 @@ async function getAssistClassController(req, res) {
   var dataFront = req.params;
   let assist = new Assist(dataFront);
 
-  console.log("assit", assist.getObject());
+  // console.log("assit", assist.getObject());
 
   const asisstance = await AssistManager.getAssistClass(assist.getObject());
   asisstance !== undefined

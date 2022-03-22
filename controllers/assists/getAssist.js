@@ -2,7 +2,7 @@ const AssistManager = require("../../managers/AssistManager");
 let Assist = require("../../models/Assist");
 
 async function getAssistController(req, res) {
-  console.log("Assist controller");
+  // console.log("Assist controller");
   var dataFront = req.body;
   let assist = new Assist(dataFront);
   const assists = await AssistManager.getAssist(assist.getObject());

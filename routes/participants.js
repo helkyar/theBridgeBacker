@@ -5,7 +5,7 @@ router.get(
 );
 router.get(
   "/courseid/:courseid",
-  require("../controllers/participants/getParticipantsConttoller"),
+  require("../controllers/participants/getParticipantsCourseController"),
 );
 router.post(
   "/add",

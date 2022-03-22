@@ -5,7 +5,7 @@ async function getParticipantCourseController(req, res) {
   //   console.log("Class controller");
   var dataFront = req.params;
   let participant = new Participant(dataFront);
-  console.log("req", req.params);
+  console.log("reqdddddddddddddddddddddd");
 
   const participants = await ParticipantManager.getParticipantCourse(
     participant.getObject(),
