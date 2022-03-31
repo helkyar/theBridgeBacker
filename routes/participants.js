@@ -13,7 +13,7 @@ router.post(
 );
 router.patch(
   "/update",
-  require("../controllers/participants/patchparticipantsController"),
+  require("../controllers/participants/patchParticipantsController"),
 );
 router.delete(
   "/delete",

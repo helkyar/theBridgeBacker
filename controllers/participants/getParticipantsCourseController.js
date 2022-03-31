@@ -1,5 +1,5 @@
 const ParticipantManager = require("../../managers/ParticipantsManager");
-let Participant = require("../../models/participants");
+let Participant = require("../../models/Participants");
 
 async function getParticipantCourseController(req, res) {
   //   console.log("Class controller");
