@@ -16,7 +16,7 @@ router.patch(
   require("../controllers/participants/patchParticipantsController"),
 );
 router.delete(
-  "/delete",
+  "/:participantId/delete/",
   require("../controllers/participants/deleteParticipantsController"),
 );
 router.get(

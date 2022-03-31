@@ -10,7 +10,7 @@ class ParticipantsManager extends Manager {
       "INSERT INTO participants (lastname,firstname,courseid,createdat) VALUES ($1,$2,$3,$4) RETURNING *;", //Array participant con user creado
     patchParticipant:
       "UPDATE participants SET lastname = $1,firstname = $2,courseid = $3,createdat = $4 WHERE id = $5", //Array participant con user modificado
-    deleteParticipant: "DELETE FROM participants WHERE id=$1 RETURNING *", //Array participant con user eliminado
+    deleteParticipant: "DELETE FROM participants WHERE id=$1", //Array participant con user eliminado
     countParticipant: "SELECT id FROM participants where courseid = $1;",
   };
 
@@ -52,7 +52,8 @@ class ParticipantsManager extends Manager {
       params
     );
   }
-  static async deleteParticipants({ id }) {
+  static async deleteParticipants( id ) {
+    console.log(id, 'participant id');
     return await this.queryExec(this.queries.deleteParticipant, Participant, [
       id,
     ]);
