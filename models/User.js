@@ -6,6 +6,7 @@ module.exports = class User {
     #login;
     #password;
     #rol;
+    #courseid
 
     constructor({
         id,
@@ -15,6 +16,7 @@ module.exports = class User {
         password,
         rol,
         email,
+        courseid
     }) {
         this.#id = id;
         this.#lastname = lastname;
@@ -23,6 +25,7 @@ module.exports = class User {
         this.#login = login;
         this.#password = password;
         this.#rol = rol;
+        this.#courseid = courseid;
     }
 
     getObject() {
@@ -33,7 +36,8 @@ module.exports = class User {
             login: this.#login,
             password: this.#password,
             email: this.#email,
-            rol: this.#rol
+            rol: this.#rol,
+            courseid: this.#courseid
         }
     }
 };

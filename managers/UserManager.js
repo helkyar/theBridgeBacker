@@ -7,7 +7,7 @@ class UserManager extends Manager {
         getAll: "SELECT * FROM users", // Array de users
         getUser: "SELECT * FROM users WHERE id=$1",
         getUserlogin: "SELECT * FROM users WHERE login=$1",
-        postUser: "INSERT INTO users (lastname,firstname,login,password,email,rol) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;", //Array user con user creado
+        postUser: "INSERT INTO users (lastname,firstname,login,password,email,rol,courseid) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *;", //Array user con user creado
         patchUser: "UPDATE users SET lastName = $1,firstName = $2,login = $3, rol= $4 ,email = $5 WHERE id = $6", //Array user con user modificado
         deleteUser: "DELETE FROM users WHERE id=$1", //Array user con user eliminado
     };
@@ -31,8 +31,8 @@ class UserManager extends Manager {
     static async userExists({ login }) {
         return await this.queryExec(this.queries.getUserlogin, User, [login]);
     }
-    static async postUsers({ lastname, firstname, login, password, email, rol }) {
-        const params = [lastname, firstname, login, password, email, rol];
+    static async postUsers({ lastname, firstname, login, password, email, rol, courseid }) {
+        const params = [lastname, firstname, login, password, email, rol, courseid];
         return await this.queryExec(this.queries.postUser, User, params);
     }
     static async patchUsers({ id, lastname, firstname, login, rol, email }) {
